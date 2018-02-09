@@ -86,11 +86,11 @@
         <li class="side-user">
             <div class="row">
                 <div class="col s4 no-padding">
-                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+                    <img class="avatar-image circle responsive-img" src="https://p3v8zcvlc.bkt.clouddn.com/blog/180209/7jDeGcB7e4.png?imageslim" alt="User Avatar">
                 </div>
                 <div class="info col s8 valign-wrapper no-padding">
                     <div class="valign">
-                        <p class="name">Chunk</p>
+                        <p class="name">Chunk 创创</p>
                         <p class="desc">计算机技术爱好者</p>
                     </div>
                 </div>
@@ -210,7 +210,7 @@
 
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-基本操作"><span class="section table-of-contents-text">1. 基本操作</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-添加基本图片属性"><span class="section table-of-contents-text">2.添加基本图片属性</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#label的进阶用法"><span class="section table-of-contents-text">label的进阶用法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#双坐标图"><span class="section table-of-contents-text">双坐标图</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-基本操作"><span class="section table-of-contents-text">1. 基本操作</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-添加基本图片属性"><span class="section table-of-contents-text">2.添加基本图片属性</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#3-label的进阶用法"><span class="section table-of-contents-text">3.label的进阶用法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#4-双坐标图"><span class="section table-of-contents-text">4.双坐标图</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#5-生成高清晰度的图片"><span class="section table-of-contents-text">5 生成高清晰度的图片</span></a></li></ol>
 </div>
 
 
@@ -225,10 +225,16 @@
 <h2 id="2-添加基本图片属性"><a href="#2-添加基本图片属性" class="headerlink" title="2.添加基本图片属性"></a>2.添加基本图片属性</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(y, label = <span class="string">"y = sin(x)"</span>, color = <span class="string">"black"</span>, linewidth = <span class="number">2</span>, linestyle = <span class="string">'-.'</span>,)</span><br><span class="line">plt.xlabel(<span class="string">'x axis'</span>)<span class="comment"># make axis labels</span></span><br><span class="line">plt.ylabel(<span class="string">'y axis'</span>)</span><br><span class="line">plt.legend()        <span class="comment"># show the labels</span></span><br></pre></td></tr></table></figure>
 <p><img src="https://p3v8zcvlc.bkt.clouddn.com/blog/180209/h05Kc1bHFb.jpg?imageslim" alt="mark"></p>
 <p><strong><em>color</em></strong> 的可选项: ‘b’ blue, ‘g’ green, ‘r’ red, ‘c’ cyan, ‘m’ magenta, ‘y’ yellow, ‘k’ black, ‘w’ white.<br><strong><em>linestyle</em></strong> 的可选项:   <code>&#39;-&#39;</code> solid line style, <code>&#39;--&#39;</code>      dashed line style, <code>&#39;-.&#39;</code>  dash-dot line style, <code>&#39;:&#39;</code>            dotted line style.</p>
-<h2 id="label的进阶用法"><a href="#label的进阶用法" class="headerlink" title="label的进阶用法"></a>label的进阶用法</h2><p>lable属性其实有很大的灵活性，包括变量显示，和公式输出。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = np.sin(x)+np.exp(x/<span class="number">10</span>)</span><br><span class="line">plt.plot(y, label = <span class="string">r"$y= \sin(x)+ e^\frac&#123;x&#125;&#123;10&#125;$"</span>, color = <span class="string">"black"</span>, linewidth = <span class="number">2</span>, linestyle = <span class="string">'-.'</span>,)</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-label的进阶用法"><a href="#3-label的进阶用法" class="headerlink" title="3.label的进阶用法"></a>3.label的进阶用法</h2><p>lable属性其实有很大的灵活性，包括变量显示，和公式输出。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = np.sin(x)+np.exp(x/<span class="number">10</span>)</span><br><span class="line">plt.plot(y, label = <span class="string">r"$y= \sin(x)+ e^\frac&#123;x&#125;&#123;10&#125;$"</span>, color = <span class="string">"black"</span>, linewidth = <span class="number">2</span>, linestyle = <span class="string">'-.'</span>,)</span><br></pre></td></tr></table></figure></p>
 <p><img src="https://p3v8zcvlc.bkt.clouddn.com/blog/180209/3GD7mD5fL2.jpg?imageslim" alt="mark"><br>这时候如果有人熟悉Latex的话可以看出来可以看到在label的表达式前添加了r前缀，绘图时就会将$$符之间的这段Latex代码变为公式。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b = <span class="number">10</span></span><br><span class="line">y = np.sin(x)+np.exp(x/b)</span><br><span class="line">plt.plot(y, label = <span class="string">r"$y= \sin(x)+ e^\frac&#123;x&#125;&#123;%d&#125;$"</span> % b, color = <span class="string">"black"</span>, linewidth = <span class="number">2</span>, linestyle = <span class="string">'-.'</span>,)</span><br></pre></td></tr></table></figure></p>
 <p>这段代码生成结果和前面一致，可以看到此处使用了变量显示的功能，还有很多可调操作符， 比如%.4f表示显示到小数点后四位。 </p>
-<h2 id="双坐标图"><a href="#双坐标图" class="headerlink" title="双坐标图"></a>双坐标图</h2>
+<h2 id="4-双坐标图"><a href="#4-双坐标图" class="headerlink" title="4.双坐标图"></a>4.双坐标图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pylab <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">x = np.arange(<span class="number">0</span>,<span class="number">20</span>, <span class="number">0.01</span>)</span><br><span class="line">y = np.sin(x)+np.exp(x/<span class="number">10</span>)</span><br><span class="line">z = np.sin(x)+<span class="number">5</span></span><br><span class="line"></span><br><span class="line">fig = plt.figure()</span><br><span class="line"></span><br><span class="line">ax1 = fig.add_subplot(<span class="number">111</span>)</span><br><span class="line">ax1.plot(y, <span class="string">'g'</span>)</span><br><span class="line">ax1.set_ylabel(<span class="string">r'$y= \sin(x)+ e^\frac&#123;x&#125;&#123;10&#125;$'</span>)</span><br><span class="line">ax1.set_title(<span class="string">"Double Y axis"</span>)</span><br><span class="line">ax2 = ax1.twinx()  <span class="comment"># this is the important function</span></span><br><span class="line">ax2.plot(z, <span class="string">'r'</span>)</span><br><span class="line">ax2.set_ylabel(<span class="string">r'$y= \sin(x)+ 5$'</span>)</span><br><span class="line"></span><br><span class="line">fig = plt.gcf()</span><br><span class="line">plt.show()</span><br><span class="line">fig.savefig(<span class="string">'sample.jpg'</span>, dpi=<span class="number">600</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://p3v8zcvlc.bkt.clouddn.com/blog/180209/iH592LJCA4.jpg?imageslim" alt="mark"></p>
+<h2 id="5-生成高清晰度的图片"><a href="#5-生成高清晰度的图片" class="headerlink" title="5 生成高清晰度的图片"></a>5 生成高清晰度的图片</h2><p>直接由命令行输出的图片清晰度比较低。进行文件排版的时候不美观。这里给出一个python主动生成图片的方法。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.gcf()</span><br><span class="line">plt.show()</span><br><span class="line">fig.savefig(<span class="string">'sample.jpg'</span>, dpi=<span class="number">600</span>)</span><br></pre></td></tr></table></figure></p>
+<p><strong><em>注意</em></strong>：这里的代码顺序非常重要，一定要在show函数之前，使用gcf函数，类似于保存图片的句柄，然后savefig。因为，python会在show之后，将图片空间释放，导致保存的图片空白。<br>这里格式后很多选择，如果使用Latex进行论文排版，建议使用pdf格式，嵌入pdf文件效果很好。</p>
+<p>问题反馈：目前本博客尚未开通留言，本人刚刚熟悉python，如果有内容中不妥地方，欢迎联系左下方邮箱斧正，免误人子弟！谢谢！</p>
+<p><strong><em>*下期</em></strong>：下一篇博客打算写python中numpy的broadcast机制，希望自己能继续坚持。</p>
+
                 
 
 
@@ -271,11 +277,7 @@
             <div class="social-group col m4 s12">
                 <h5 class="white-text">Social</h5>
                 
-                    <a class="social-link" href="http://weibo.com/1956184117" target="_blank">
-                        <i class="fa fa-2x fa-weibo"></i>
-                    </a>
-                
-                    <a class="social-link" href="https://github.com/raytaylorlin" target="_blank">
+                    <a class="social-link" href="chunkcn@gmail.com" target="_blank">
                         <i class="fa fa-2x fa-at"></i>
                     </a>
                 
