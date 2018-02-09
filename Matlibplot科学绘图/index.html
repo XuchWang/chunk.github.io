@@ -7,7 +7,7 @@
 
     
 
-    <title>关于 | write and record</title>
+    <title>Matlibplot科学绘图 | write and record</title>
     <meta name="author" content="Chunk">
     
     <meta name="description" content="Contact me chunkcn@gmail.com">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="关于"/>
+    <meta property="og:title" content="Matlibplot科学绘图"/>
     <meta property="og:site_name" content="Share Knowledge"/>
 
     
@@ -168,57 +168,85 @@
 
 
     <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">Current page(Categories)</span>
+        
+            
+
         
 
+        
+    </div>
+</nav>
 
-<div class="container main-container">
-    <div class="card about-page row">
-        <div class="header indigo">
-            <div class="avatar-wrapper center-align">
-                <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Matlibplot科学绘图</h1>
+    
+
+
             </div>
-            <div class="info center-align">
-                <p class="name">Chunk</p>
-                <p class="desc">chunkcn@gmail.com</p>
-            </div>
+            <time class="pink-link-context" datetime="2018-02-08T22:44:12.000Z"><a href="/Matlibplot科学绘图/">2018-02-09</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
 
             
-                <div class="social-group center-align">
-                    
-                        <a class="social-link" href="http://weibo.com/1956184117" target="_blank">
-                            <i class="fa fa-2x fa-weibo"></i>
-                        </a>
-                    
-                        <a class="social-link" href="https://github.com/raytaylorlin" target="_blank">
-                            <i class="fa fa-2x fa-at"></i>
-                        </a>
-                    
-                </div>
-            
-        </div>
-
-        <article>
-            <div class="card-content">
-                <section class="about-me">
-                    <h1 class="indigo-text">
-                        <i class="fa fa-street-view"></i>About</h1>
-                    <div class="entry pink-link-context">
-                        <p>大家好，我是XXX。欢迎来到我的个人技术博客。</p>
-<p>这里用markdown写下你的简介，就跟平时写md一样就可以了。</p>
-
-                    </div>
-                </section>
-
-                
-
-                
-
-                
-            </div>
-        </article>
+    <div class="tags-row">
+        
+            <a href="/tags/python/" class="chip pink lighten-1">python</a>
+        
     </div>
 
-    
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-基本操作"><span class="section table-of-contents-text">1. 基本操作</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-添加基本图片属性"><span class="section table-of-contents-text">2.添加基本图片属性</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#label的进阶用法"><span class="section table-of-contents-text">label的进阶用法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#双坐标图"><span class="section table-of-contents-text">双坐标图</span></a></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <pre><code>&gt;互联网社群的共享意识很强，各种知识，问题都很容易在Internet上找到解答或者hint。一直想写博客，回馈知识，这次终于可以开始了
+</code></pre><p><strong><em>文章摘要</em></strong>：本文主要介绍Matlibplot在python中进行图片输出的操作。其中包括的进阶操作有：使用Latex格式显示公式，输出双坐标图，保存高清晰度的pdf图的方法。</p>
+<h2 id="1-基本操作"><a href="#1-基本操作" class="headerlink" title="1. 基本操作"></a>1. 基本操作</h2><p>​    首先，把python中最为常用的两个包导入。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pylab <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+<p>​    然后，随便生成一个函数，就可以开始画图了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.arange(<span class="number">0</span>,<span class="number">20</span>, <span class="number">0.01</span>)</span><br><span class="line">y = np.sin(x)</span><br><span class="line">plt.plot(y)</span><br></pre></td></tr></table></figure>
+<p><img src="https://p3v8zcvlc.bkt.clouddn.com/blog/180209/FkkjHE5Jj7.jpg?imageslim" alt="mark"></p>
+<h2 id="2-添加基本图片属性"><a href="#2-添加基本图片属性" class="headerlink" title="2.添加基本图片属性"></a>2.添加基本图片属性</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(y, label = <span class="string">"y = sin(x)"</span>, color = <span class="string">"black"</span>, linewidth = <span class="number">2</span>, linestyle = <span class="string">'-.'</span>,)</span><br><span class="line">plt.xlabel(<span class="string">'x axis'</span>)<span class="comment"># make axis labels</span></span><br><span class="line">plt.ylabel(<span class="string">'y axis'</span>)</span><br><span class="line">plt.legend()        <span class="comment"># show the labels</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://p3v8zcvlc.bkt.clouddn.com/blog/180209/h05Kc1bHFb.jpg?imageslim" alt="mark"></p>
+<p><strong><em>color</em></strong> 的可选项: ‘b’ blue, ‘g’ green, ‘r’ red, ‘c’ cyan, ‘m’ magenta, ‘y’ yellow, ‘k’ black, ‘w’ white.<br><strong><em>linestyle</em></strong> 的可选项:   <code>&#39;-&#39;</code> solid line style, <code>&#39;--&#39;</code>      dashed line style, <code>&#39;-.&#39;</code>  dash-dot line style, <code>&#39;:&#39;</code>            dotted line style.</p>
+<h2 id="label的进阶用法"><a href="#label的进阶用法" class="headerlink" title="label的进阶用法"></a>label的进阶用法</h2><p>lable属性其实有很大的灵活性，包括变量显示，和公式输出。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = np.sin(x)+np.exp(x/<span class="number">10</span>)</span><br><span class="line">plt.plot(y, label = <span class="string">r"$y= \sin(x)+ e^\frac&#123;x&#125;&#123;10&#125;$"</span>, color = <span class="string">"black"</span>, linewidth = <span class="number">2</span>, linestyle = <span class="string">'-.'</span>,)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://p3v8zcvlc.bkt.clouddn.com/blog/180209/3GD7mD5fL2.jpg?imageslim" alt="mark"><br>这时候如果有人熟悉Latex的话可以看出来可以看到在label的表达式前添加了r前缀，绘图时就会将$$符之间的这段Latex代码变为公式。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b = <span class="number">10</span></span><br><span class="line">y = np.sin(x)+np.exp(x/b)</span><br><span class="line">plt.plot(y, label = <span class="string">r"$y= \sin(x)+ e^\frac&#123;x&#125;&#123;%d&#125;$"</span> % b, color = <span class="string">"black"</span>, linewidth = <span class="number">2</span>, linestyle = <span class="string">'-.'</span>,)</span><br></pre></td></tr></table></figure></p>
+<p>这段代码生成结果和前面一致，可以看到此处使用了变量显示的功能，还有很多可调操作符， 比如%.4f表示显示到小数点后四位。 </p>
+<h2 id="双坐标图"><a href="#双坐标图" class="headerlink" title="双坐标图"></a>双坐标图</h2>
+                
+
+
+<p class="pink-link-context">
+    <a href="/My-First-Blog/" rel="next" title="My First Blog">
+    Next: My First Blog
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
 
 
 
