@@ -7,7 +7,7 @@
 
     
 
-    <title>归档：2018/2 | write and record</title>
+    <title>numpy中broadcast机制应用 | write and record</title>
     <meta name="author" content="Chunk">
     
     <meta name="description" content="Contact me chunkcn@gmail.com">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="numpy中broadcast机制应用"/>
     <meta property="og:site_name" content="Share Knowledge"/>
 
     
@@ -161,46 +161,85 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（标签）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+
         
 
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>numpy中broadcast机制应用</h1>
+    
 
 
-    <ul class="collapsible mt-0" data-collapsible="accordion">
+            </div>
+            <time class="pink-link-context" datetime="2018-02-11T06:27:41.000Z"><a href="/numpy中broadcast机制应用/">2018-02-11</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
+            <a href="/tags/python/" class="chip pink lighten-1">python</a>
         
-            <li>
-                <div class="collapsible-header active">
-                    <i class="fa fa-archive"></i>2018
-                </div>
-                <div class="collapsible-body">
-                    <div class="collection">
-                        
-                            <a href="/numpy中broadcast机制应用/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2018-02-11T06:27:41.000Z">2018-02-11</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                numpy中broadcast机制应用
-                            </a>
-                        
-                            <a href="/Matlibplot科学绘图/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2018-02-08T22:44:12.000Z">2018-02-09</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                Matlibplot科学绘图
-                            </a>
-                        
-                    </div>
-                </div>
-            </li>
-        
-    </ul>
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-简单-broadcasting-引入"><span class="section table-of-contents-text">1. 简单 broadcasting 引入</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-broadcasting-进阶一"><span class="section table-of-contents-text">2. broadcasting 进阶一</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#3-再进阶"><span class="section table-of-contents-text">3. 再进阶</span></a></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p><strong><em>文章摘要</em></strong> 这篇文章主要介绍numpy库中对矩阵实现的Broadcasting机制的使用方法。broadcasting机制的使用往往代表着数据结构中以空间换时间思想的实现，使用这种方法，往往可以将循环替换为一次全并行的计算，或者说将一维数组的运算改为矩阵的运算。</p>
+<h2 id="1-简单-broadcasting-引入"><a href="#1-简单-broadcasting-引入" class="headerlink" title="1. 简单 broadcasting 引入"></a>1. 简单 <strong><em>broadcasting</em></strong> 引入</h2><p>首先考虑这样一个简单的循环求和运算<br>$$\sum_{i=1}^{N}(x_i - 5)$$<br>容易地，可以使用下面的程序完成计算：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_x</span><span class="params">(x)</span>:</span></span><br><span class="line">    sum_1 = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(x)):</span><br><span class="line">        sum_1 += x[i] - <span class="number">5</span></span><br><span class="line">    <span class="keyword">return</span> sum_1</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，这时候的计算复杂度是$O(N)$，使用broadcast机制，可以使用：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_new</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> np.sum(x - <span class="number">5</span>)</span><br></pre></td></tr></table></figure></p>
+<p>两种方法的结果效果一致。这里考虑到numpy中sum函数的使用，计算复杂度没有降低。但是，此处值得借鉴的是，numpy没有拘泥于两个相减变量必须相同维度，方便的实现了上面的求和式，并且提高了代码的可读性。</p>
+<h2 id="2-broadcasting-进阶一"><a href="#2-broadcasting-进阶一" class="headerlink" title="2. broadcasting 进阶一"></a>2. <strong><em>broadcasting</em></strong> 进阶一</h2><p>然而，实际中可能会出现下面这种公式：<br>$$\sum<em>{i=1}^{N}\sum</em>{j=1}^{M}(x_i-y_j)$$<br>一般的实现方法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum2</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    sum_2 = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(x)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(y)):</span><br><span class="line">            sum_2 += x[i] - y[j]</span><br><span class="line">    <span class="keyword">return</span> sum_2</span><br></pre></td></tr></table></figure></p>
+<p>假设x,y都是用array生成的一维行向量。这个时候，计算复杂度是$O(NM)$，可以视为$O(N^2)$，这段代码在稍长一点的数组间进行计算时，会明显的降低程序的执行速度。</p>
+<p>使用broadcasting时，可以将计算复杂度大大降低。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum2_new</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> np.sum(x.reshape(len(x), <span class="number">1</span>) - y)</span><br></pre></td></tr></table></figure></p>
+<p>简单一行代码就完成了一次嵌套for循环。这里reshape函数，将一维行向量变x为一维列向量, 当列向量减行向量的时候，numpy会调动<strong><em>broadcasting</em></strong> 机制，自动将前者填充一个N行M列的矩阵，每一行都和y同长度，分别减去y。这样就实现了x中每一个元素和y中的每一个元素相减，并求和。</p>
+<h2 id="3-再进阶"><a href="#3-再进阶" class="headerlink" title="3. 再进阶"></a>3. 再进阶</h2><p>前面两种方法，如果使用得当，已经可以很快捷的编写出方便阅读和使用的python代码。但是有时候，可能会出现比较偏执的三个求和号：<br>$$\sum<em>{k=1}^{N}\sum</em>{j=1}^{N}\sum_{i=1}^{N}(x_k - x_i)(y_k - y_j)$$<br>容易地，这里当然可以使用三个嵌套的for循环完成计算，但是计算耗时之大，显而易见！<br>这里x,y是相同长度的一位行向量：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum3</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> (x.reshape(len(x), <span class="number">1</span>, <span class="number">1</span>).repeat(len(x), axis=<span class="number">1</span>) - x) * (y.reshape(len(y), <span class="number">1</span>, <span class="number">1</span>).repeat(len(y), axis=<span class="number">2</span>) - y.reshape(len(y), <span class="number">1</span>))</span><br></pre></td></tr></table></figure></p>
+<p>这种方法的受众比较少，使用时需要将x，y都投射到三维矩阵中进行考虑，略有复杂，为了追求程序的简洁性，可以尝试，相同的，此时程序的可读性比较差。</p>
+<blockquote>
+<p>三维下使用broadcasting的确可以大大提升运算速度，但是同样的代价是立方级别的内存空间，对过长的行向量使用时，务必要注意，内存很容易出现爆炸，导致电脑之间卡住！！！</p>
+</blockquote>
+
+                
+
+
+<p class="pink-link-context">
+    <a href="/Matlibplot科学绘图/" rel="next" title="Matlibplot科学绘图">
+    下一篇：Matlibplot科学绘图
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
 
 
 </div>
